@@ -1,13 +1,15 @@
-# TheProjectOfMyLife
+# The Project Of MyLife
 
-<p>Server side - version 1.0</p>
+Language: TypeScript<br>
+Back-end: Node.js<br>
+ORM: Prisma<br>
+Database: SQLite<br>
+Mail service: AWS SES<hr>
+
+<p>Server side - version 1.0.1</p>
 - CRUD User - OK <br>
 - Auth User - {
 "token": "OK", 
 "middleware auth": "OK",
-"e-mail verification": "Not yet"}<br><hr>
-<p>Server side - version 1.0.1</p>
-- Auth User - {
-"e-mail verification": "OK"
-} <br>
+"e-mail verification": "OK"}<br>
 - Password recover - Not yet
