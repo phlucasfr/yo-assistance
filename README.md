@@ -5,7 +5,7 @@
 - Auth User - {
 "token": "OK", 
 "middleware auth": "OK",
-"e-mail verification": "Not yet"}<br><br>
+"e-mail verification": "Not yet"}<br><hr>
 <p>Server side - version 1.0.1</p>
 - Auth User - {
 "e-mail verification": "OK"
