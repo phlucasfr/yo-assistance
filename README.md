@@ -3,7 +3,11 @@
 <p>Server side - version 1.0</p>
 - CRUD User - OK <br>
 - Auth User - {
-"token": "Ok", 
-"middleware auth": "Ok", 
-"e-mail verification": "Not yet"
-}
+"token": "OK", 
+"middleware auth": "OK",
+"e-mail verification": "Not yet"}<br><br>
+<p>Server side - version 1.0.1</p>
+- Auth User - {
+"e-mail verification": "OK"
+} <br>
+- Password recover - Not yet
