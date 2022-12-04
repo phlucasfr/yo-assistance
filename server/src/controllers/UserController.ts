@@ -1,6 +1,8 @@
 import { Request, Response } from "express";
 import { hash } from "bcryptjs";
 import { prisma } from "../utils/prisma";
+import { sendMsgSrv } from "../routes/Routes";
+
 
 export class UserController {
 
@@ -21,9 +23,14 @@ export class UserController {
                     name_usu: body.name_usu,
                     email_usu: body.email_usu,
                     emaver_usu: false,
+                    vercod_usu: Math.floor(Math.random() * 999999) - 100000,
                     celnum_usu: body.celnum_usu
                 }
             })
+
+            //Envia o e-mail de verificação
+            sendMsgSrv.sendVerifMessageService(body.email_usu)
+
             responseStatus = response.status(201).json("User successfully created.");
 
         } catch (error: any) {
@@ -56,6 +63,7 @@ export class UserController {
                     name_usu: true,
                     email_usu: true,
                     celnum_usu: true,
+                    emaver_usu: true,
                     dahins_usu: true
                 },
                 orderBy: {

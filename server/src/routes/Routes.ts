@@ -7,7 +7,6 @@ import { UserController } from "../controllers/UserController";
 const authController = new AuthController;
 const userController = new UserController;
 export const sendMsgSrv = new SendMessageService;
-
 export const router = Router();
 
 //user routes
@@ -21,4 +20,4 @@ router.delete("/deleteuser/", userController.deleteUser);
 router.post("/authuser/", authController.authUser);
 
 //services routes
-router.post("/sndmail/", authMiddleware, sendMsgSrv.runSendMessageService);
+//router.post("/sndmail/", sendMsgSrv.sendVerifMessageService);
