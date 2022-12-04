@@ -1,4 +1,4 @@
-# The Project Of MyLife
+# The Project Of My Life
 
 Language: TypeScript<br>
 Back-end: Node.js<br>
