@@ -22,4 +22,4 @@ router.delete("/deleteuser/", userController.deleteUser);
 
 //auth routes
 router.post("/authuser/", authController.authUser);
-router.post("/authrecovpass/", authController.authRecovPass);
+router.put("/authrecovpass/", authController.authRecovPass);

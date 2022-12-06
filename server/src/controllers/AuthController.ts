@@ -23,7 +23,7 @@ export class AuthController {
             })
 
             //transforma a senha em hash
-            let isValidPassword = await compare(body.paswrd_usu, userByEmail.paswrd_usu);
+            let isValidPassword = body.paswrd_usu == userByEmail.paswrd_usu
 
             if (!isValidPassword) {
                 responseStatus = response.status(401).json("Invalid password.");
