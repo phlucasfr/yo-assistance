@@ -1,4 +1,4 @@
-import { compare } from "bcryptjs";
+import { compare, hash } from "bcryptjs";
 import { prisma } from "../utils/prisma";
 import { sign } from "jsonwebtoken";
 import { Request, Response } from "express";
@@ -23,7 +23,7 @@ export class AuthController {
             })
 
             //transforma a senha em hash
-            let isValidPassword = body.paswrd_usu == userByEmail.paswrd_usu
+            let isValidPassword = await compare(String(body.paswrd_usu), userByEmail.paswrd_usu)
 
             if (!isValidPassword) {
                 responseStatus = response.status(401).json("Invalid password.");
@@ -82,7 +82,7 @@ export class AuthController {
                         vercod_usu: body.vercod_usu
                     },
                     data: {
-                        paswrd_usu: body.paswrd_usu,
+                        paswrd_usu: await hash(body.paswrd_usu, 8),
                         vercod_usu: Math.floor(Math.random() * 999999) - 100000
                     }
                 });

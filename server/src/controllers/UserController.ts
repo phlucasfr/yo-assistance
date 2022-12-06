@@ -104,7 +104,7 @@ export class UserController {
             responseMsg = response.status(200).json([userById]);
 
         } catch (error) {
-            console.log(error)
+
             if (error == 'NotFoundError: No User found') {
                 responseMsg = response.status(404).json("User not found");
             } else {
@@ -119,7 +119,7 @@ export class UserController {
 
         const body = request.body;
         const idUser = request.body.id;
-        console.log(body)
+
         let responseStatus;
 
         //recebe a coluna para realizar o update 

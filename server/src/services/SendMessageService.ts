@@ -23,7 +23,7 @@ export class SendMessageService {
 
 
         let strIsVerified = isVerified.VerificationAttributes[emailUser]
-        console.log(strIsVerified)
+
         return strIsVerified
     }
 
