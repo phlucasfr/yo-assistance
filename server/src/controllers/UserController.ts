@@ -3,7 +3,6 @@ import { hash } from "bcryptjs";
 import { prisma } from "../utils/prisma";
 import { sendMsgSrv } from "../routes/Routes";
 
-
 export class UserController {
 
     async storeUser(request: Request, response: Response) {

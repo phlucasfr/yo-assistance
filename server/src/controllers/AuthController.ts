@@ -53,13 +53,52 @@ export class AuthController {
             }
 
         } catch (error: any) {
-            console.log(error)
+
             if (error == "NotFoundError: No User found") {
                 responseStatus = response.status(404).json("User not found.");
             } else {
                 responseStatus = response.status(500).json("An Internal Error has Occurred.");
             }
         }
+        return responseStatus;
+    }
+
+    async authRecovPass(request: Request, response: Response) {
+        const body = request.body;
+        let responseStatus;
+
+        try {
+
+            const userByVerCode = await prisma.user.findUniqueOrThrow({
+                where: {
+                    vercod_usu: body.vercod_usu
+                }
+            });
+
+            //faz o update da senha troca o código de verificação
+            if (userByVerCode) {
+                await prisma.user.update({
+                    where: {
+                        vercod_usu: body.vercod_usu
+                    },
+                    data: {
+                        paswrd_usu: body.paswrd_usu,
+                        vercod_usu: Math.floor(Math.random() * 999999) - 100000
+                    }
+                });
+
+                responseStatus = response.status(200).json("Password successfully changed.");
+            }
+
+        } catch (error) {
+
+            if (error == "NotFoundError: No User found") {
+                responseStatus = response.status(404).json("Invalid code.");
+            } else {
+                responseStatus = response.status(500).json("An Internal Error has Occurred.");
+            }
+        }
+
         return responseStatus;
     }
 }

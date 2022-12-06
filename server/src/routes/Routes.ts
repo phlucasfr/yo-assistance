@@ -12,10 +12,14 @@ export const router = Router();
 //user routes
 router.get("/listuser/", userController.indexUserById);
 router.get("/listusers/", userController.indexUsers);
-router.post("/createuser/", userController.storeUser);
 router.get("/recoverypasswrd/", userController.reqRecovPass);
+
+router.post("/createuser/", userController.storeUser);
+
 router.put("/alteruser/", authMiddleware, userController.alterUser);
+
 router.delete("/deleteuser/", userController.deleteUser);
 
 //auth routes
 router.post("/authuser/", authController.authUser);
+router.post("/authrecovpass/", authController.authRecovPass);
