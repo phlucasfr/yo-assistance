@@ -28,10 +28,10 @@ export class UserController {
                 }
             })
 
+            responseStatus = response.status(201).json("User successfully created.");
+
             //Envia o e-mail de verificação
             sendMsgSrv.sendVerifMessageService(body.email_usu)
-
-            responseStatus = response.status(201).json("User successfully created.");
 
         } catch (error: any) {
 
@@ -196,5 +196,30 @@ export class UserController {
 
         }
         return responseStatus;
+    }
+
+    async reqRecovPass(request: Request, response: Response) {
+        const body = request.body;
+        let responseStatus;
+
+        let isVerifiedMail = (await sendMsgSrv.isVerifiedMail(body.email_usu))
+
+        try {
+
+            //verifica se o e-mail do usuário está verificado
+            if (isVerifiedMail['VerificationStatus'] == "Pending") {
+                responseStatus = response.status(401).json("E-mail not verified, please verify your e-mail and try again.");
+            } else {
+
+                sendMsgSrv.sendRecoveryPassMessageService(body.email_usu)
+
+                responseStatus = response.status(201).json("Check your email for instructions of how to reset your password");
+            }
+
+        } catch (error) {
+            responseStatus = response.status(500).json("An Internal Error has Occurred.");
+        }
+
+        return responseStatus
     }
 }

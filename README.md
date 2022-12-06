@@ -5,5 +5,5 @@
 - Auth User - {
 "token": "Ok", 
 "middleware auth": "Ok", 
-"e-mail verification": "Not yet"
+"e-mail verification": "Ok"
 }

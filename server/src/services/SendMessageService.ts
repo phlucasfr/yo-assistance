@@ -41,4 +41,66 @@ export class SendMessageService {
             console.log(error)
         }
     }
+
+    public async sendRecoveryPassMessageService(
+        emailUser: string
+    ) {
+
+        //troca o código de verificação antes de realizar o envio
+        await prisma.user.update({
+            where: {
+                email_usu: emailUser
+            },
+            data: {
+                vercod_usu: Math.floor(Math.random() * 999999) - 100000
+            }
+        })
+
+        const selUser = await prisma.user.findUnique({
+            select: {
+                vercod_usu: true,
+                name_usu: true
+            }, where: {
+                email_usu: emailUser
+            }
+        })
+
+        let htmlBase = "<html>"
+            + "<head>"
+            + "<meta charset='UTF-8'>"
+            + "</head>"
+            + "<body>"
+            + "<h1>Ol&aacute; " + selUser?.name_usu + " !</h1>"
+            + "<p>Seu c&oacute;digo de verifica&ccedil;&atilde;o &eacute; "
+            + selUser?.vercod_usu + "</p>"
+            + "</body>"
+            + "</html>";
+
+        try {
+
+            await sendMsgSrv.client.sendEmail({
+                Source: 'Phelipe Lucas <phlucasfr@gmail.com>',
+                Destination: {
+                    ToAddresses: [selUser?.name_usu + ' <' + emailUser + '>'],
+                },
+                Message: {
+
+                    Subject: {
+                        Data: 'RecuperaÃ§Ã£o de senha'
+                    },
+
+                    Body: {
+                        Html: {
+                            Charset: 'UTF-8',
+                            Data: htmlBase,
+                        }
+                    }
+                },
+                ConfigurationSetName: 'loginPage'
+            }).promise();
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
 }
