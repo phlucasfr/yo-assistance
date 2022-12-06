@@ -6,11 +6,12 @@ ORM: Prisma<br>
 Database: SQLite<br>
 Mail service: AWS SES<hr>
 
-<p>Server side - version 1.0.2</p>
+<p>Server side - version 1.0.3</p>
 - CRUD User - OK <br>
 - Auth User - {
 "token": "OK", 
 "middleware auth": "OK", 
 "e-mail verification": "OK"
 }<br>
-- Recovery password token -OK
+- Recovery password token - OK<br>
+- Auth recovery password - OK
