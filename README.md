@@ -15,3 +15,7 @@ Mail service: AWS SES<hr>
 }<br>
 - Recovery password token - OK<br>
 - Auth recovery password - OK
+
+<p>Client web side - version 1.0.0</p>
+- Sign page - OK <br>
+- Integration with server side API - Not yet
