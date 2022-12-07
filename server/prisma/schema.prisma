@@ -13,8 +13,8 @@ model User {
   paswrd_usu String
   name_usu   String
   email_usu  String   @unique
-  celnum_usu String   @unique
-  emaver_usu Boolean  @unique
+  celnum_usu String
+  emaver_usu Boolean
   vercod_usu Decimal  @unique
   dahins_usu DateTime @default(now())
   //game            Game     @relation(fields: [gameId], references: [id])

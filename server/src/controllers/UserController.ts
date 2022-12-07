@@ -216,7 +216,11 @@ export class UserController {
             }
 
         } catch (error) {
-            responseStatus = response.status(500).json("An Internal Error has Occurred.");
+            if (isVerifiedMail == undefined) {
+                responseStatus = response.status(401).json("User not found.");
+            } else {
+                responseStatus = response.status(500).json("An Internal Error has Occurred.");
+            }
         }
 
         return responseStatus
