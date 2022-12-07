@@ -1,7 +1,9 @@
-# The Project Of My Life
+# Yo - Assistance for everything
 
 Language: TypeScript<br>
 Back-end: Node.js<br>
+Front-end: React.js<br>
+Frameworks: [Tailwind CSS, ViteJs]<br>
 ORM: Prisma<br>
 Database: SQLite<br>
 Mail service: AWS SES<hr>
@@ -14,7 +16,8 @@ Mail service: AWS SES<hr>
 "e-mail verification": "OK"
 }<br>
 - Recovery password token - OK<br>
-- Auth recovery password - OK
+- Auth recovery password - OK7
+<br><br>
 
 <p>Client web side - version 1.0.0</p>
 - Sign page - OK <br>
