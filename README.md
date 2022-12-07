@@ -1,7 +1,7 @@
 # Yo - Assistance for everything
 
-Back-end: Node.js|TypeScript<br>
-Front-end: React.js|TypeScript<br>
+Back-end: Node.js | TypeScript<br>
+Front-end: React.js | TypeScript<br>
 Frameworks: [Tailwind CSS, ViteJs]<br>
 ORM: Prisma<br>
 Database: SQLite<br>
